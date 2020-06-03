@@ -9,13 +9,16 @@ using UnityEngine.UI;
 public class ChangeColor : MonoBehaviour {
 
     private GameObject mainCamera;
-    public int angle, color_red, color_green, color_blue;
-    public string tmp_r, tmp_g, tmp_b;
-    public string[, , ] rgb = new string[90, 360, 3];
+    private GameObject polarizer;
+
+    private int angle, rotate, color_red, color_green, color_blue;
+    private string[, , ] rgb = new string[90, 360, 3];
 
     void Start () {
         mainCamera = Camera.main.gameObject;
+        polarizer = GameObject.FindGameObjectWithTag ("Polarizer");
 
+        //fileの読み込み -> 0.5mの画像
         string fileName = "C:/Users/kona/image_end.txt";
         var arrText = new List<string> ();
         StreamReader objReader = new StreamReader (fileName);
@@ -43,13 +46,7 @@ public class ChangeColor : MonoBehaviour {
             }
         }
 
-        //Console.WriteLine(array[0, 97199]);
-
-        // input   -> array
-        // output -> rgb
-
         int column, row, color, temporary;
-        //string[, , ] rgb = new string[90, 360, 3];
         for (int i = 0; i < 97200; i++) {
             temporary = i % 270;
             column = temporary / 3;
@@ -64,19 +61,16 @@ public class ChangeColor : MonoBehaviour {
 
     void Update () {
         angle = (int) mainCamera.transform.localEulerAngles.x;
+        rotate = (int) polarizer.transform.localEulerAngles.y;
 
         if (0 > angle || angle > 90) {
             Color color = new Color32 (255, 255, 255, 0);
             GetComponent<Renderer> ().material.color = color;
         } else {
-            // rgb[観測角度(0~90°), 偏光版角度(0~360°), 色(0~2)]
-            tmp_r = rgb[angle, 0, 0];
-            tmp_g = rgb[angle, 0, 1];
-            tmp_b = rgb[angle, 0, 2];
-
-            color_red = int.Parse (tmp_r);
-            color_green = int.Parse (tmp_g);
-            color_blue = int.Parse (tmp_b);
+            //      rgb[ 観測角度(0~90°), 偏光版角度(0~360°), 色rgb(0~2) ]
+            color_red = int.Parse (rgb[angle, rotate, 0]);
+            color_green = int.Parse (rgb[angle, rotate, 1]);
+            color_blue = int.Parse (rgb[angle, rotate, 2]);
 
             Color color = new Color32 ((byte) color_red, (byte) color_green, (byte) color_blue, 1);
             GetComponent<Renderer> ().material.color = color;
