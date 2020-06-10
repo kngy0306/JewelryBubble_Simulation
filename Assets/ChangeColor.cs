@@ -19,7 +19,7 @@ public class ChangeColor : MonoBehaviour {
         polarizer = GameObject.FindGameObjectWithTag ("Polarizer");
 
         //fileの読み込み -> 0.5mの画像
-        string fileName = "C:/Users/kona/image_end.txt";
+        string fileName = "C:/Users/kona/arrayFolder/5.txt";
         var arrText = new List<string> ();
         StreamReader objReader = new StreamReader (fileName);
 
@@ -55,8 +55,6 @@ public class ChangeColor : MonoBehaviour {
 
             rgb[column, row, color] = array[0, i];
         }
-
-        Debug.Log (rgb[53, 0, 0]);
     }
 
     void Update () {
