@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Polarizer
   - Cylinder
+  - Text
   layers:
   - Default
   - TransparentFX

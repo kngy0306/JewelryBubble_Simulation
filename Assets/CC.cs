@@ -55,8 +55,6 @@ public class CC : MonoBehaviour {
 
             rgb[column, row, color] = array[0, i];
         }
-
-        Debug.Log (rgb[53, 0, 0]);
     }
 
     void Update () {
