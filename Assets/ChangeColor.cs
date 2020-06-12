@@ -11,6 +11,8 @@ public class ChangeColor : MonoBehaviour {
     private GameObject mainCamera;
     private GameObject polarizer;
 
+    private int number = 5;
+
     private int angle, rotate, color_red, color_green, color_blue;
     private string[, , ] rgb = new string[90, 360, 3];
 
@@ -19,7 +21,7 @@ public class ChangeColor : MonoBehaviour {
         polarizer = GameObject.FindGameObjectWithTag ("Polarizer");
 
         //fileの読み込み -> 0.5mの画像
-        string fileName = "C:/Users/kona/arrayFolder/5.txt";
+        string fileName = "C:/Users/kona/arrayFolder/" + number + ".txt";
         var arrText = new List<string> ();
         StreamReader objReader = new StreamReader (fileName);
 
