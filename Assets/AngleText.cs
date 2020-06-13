@@ -15,6 +15,7 @@ public class AngleText : MonoBehaviour {
 
     void Update () {
         angle = (int) mainCamera.transform.localEulerAngles.x;
+        angle = 90 - angle;
         Text angle_text = angle_object.GetComponent<Text> ();
         angle_text.text = "観測角度 " + angle + "°";
     }

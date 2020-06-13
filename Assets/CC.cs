@@ -59,6 +59,7 @@ public class CC : MonoBehaviour {
 
     void Update () {
         angle = (int) mainCamera.transform.localEulerAngles.x;
+        angle = 90 - angle;
         rotate = (int) polarizer.transform.localEulerAngles.y;
 
         if (0 > angle || angle > 90) {
