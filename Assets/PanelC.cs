@@ -10,9 +10,9 @@ public class PanelC : MonoBehaviour {
     // 偏光版回転
     private void polarizerRotate () {
         if (Input.GetKey (KeyCode.RightArrow)) {
-            transform.Rotate (0, 0, -0.5f);
+            transform.Rotate (0, 0, -1f);
         } else if (Input.GetKey (KeyCode.LeftArrow)) {
-            transform.Rotate (0, 0, 0.5f);
+            transform.Rotate (0, 0, 1f);
         }
     }
 }

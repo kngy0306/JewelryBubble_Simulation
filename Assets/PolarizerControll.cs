@@ -26,19 +26,16 @@ public class PolarizerControll : MonoBehaviour {
         if (Input.GetKey ("space")) {
             polarizer.transform.RotateAround (cubeObject.transform.position, Vector3.right, angle.y);
         }
-        if (Input.GetKey ("left shift")) {
-            polarizer.transform.RotateAround (cubeObject.transform.position, Vector3.up, angle.x);
-        }
     }
 
     // 偏光版回転
     private void polarizerRotate () {
         if (Input.GetKey (KeyCode.RightArrow)) {
             Vector3 rotate = new Vector3 (0, rotateSpeed, 0);
-            polarizer.transform.Rotate (0, rotate.y * 5f, 0);
+            polarizer.transform.Rotate (0, rotate.y * 10f, 0);
         } else if (Input.GetKey (KeyCode.LeftArrow)) {
             Vector3 rotate = new Vector3 (0, -rotateSpeed, 0);
-            polarizer.transform.Rotate (0, rotate.y * 5f, 0);
+            polarizer.transform.Rotate (0, rotate.y * 10f, 0);
         }
     }
 }
