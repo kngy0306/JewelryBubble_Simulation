@@ -21,9 +21,13 @@ public class PolarizerControll : MonoBehaviour {
 
     // 観測角度
     private void polarizerAngle () {
+        Vector3 angle = new Vector3 (Input.GetAxis ("Mouse X") * rotateSpeed, Input.GetAxis ("Mouse Y") * 2, 0);
+
         if (Input.GetKey ("space")) {
-            Vector3 angle = new Vector3 (Input.GetAxis ("Mouse X") * rotateSpeed, Input.GetAxis ("Mouse Y") * 2, 0);
             polarizer.transform.RotateAround (cubeObject.transform.position, Vector3.right, angle.y);
+        }
+        if (Input.GetKey ("left shift")) {
+            polarizer.transform.RotateAround (cubeObject.transform.position, Vector3.up, angle.x);
         }
     }
 
